@@ -1,0 +1,25 @@
+include "~/.nano/*.nanorc"
+
+set mouse
+set multibuffer # Open multiple files.
+set regexp # Search with regex.
+
+# Screen movement.
+set afterends
+set nowrap
+set smooth # Don't teleport screen on scroll.
+
+# Info panels.
+set constantshow
+set linenumbers
+
+# Whitespace.
+set tabsize 4
+set autoindent
+set nonewlines
+
+# Colors!
+set titlecolor normal,magenta
+set selectedcolor normal,blue # To make it look like normal text selection.
+set statuscolor normal,magenta
+set numbercolor normal,magenta
