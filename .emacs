@@ -7,6 +7,10 @@
 (setq-default require-final-newline nil)
 (setq-default cursor-type 'bar) ;;; Thin cursor.
 
+;; Remove the stuff. Not that it's useless just that it's ugly.
+(scroll-bar-mode -1)
+(menu-bar-mode -1)
+(tool-bar-mode -1)
 
 ;; Set default directory.
 (setq inhibit-startup-message t)
@@ -14,6 +18,12 @@
  ((string-equal system-type "windows-nt")
 	(progn
 		(setq default-directory (concat (getenv "HOME") "/../../Documents/Ben/")))))
+
+;; org-mode settings.
+(setq org-catch-invisible-edits t
+			org-support-shift-select t)
+
+(global-set-key (kbd "C-x r r") 'remember) ;;; Take quick notes.
 
 ;; No more *Messages* buffer.
 (setq-default message-log-max nil)
@@ -29,23 +39,13 @@
 (setq set-mark-command-repeat-pop t) ;;; C-SPC after C-u C-SPC to keep popping.
 (set-face-attribute 'default nil :font "Fira Code-12")
 
-(if (version<= "26.0.50" emacs-version)
-		(global-display-line-numbers-mode)
-	(global-linum-mode 1))
-
 ;; Quickly zoom in and out of the buffer.
 (defun zoom-out ()
 	(interactive)
-  (if (version<= "26.0.50" emacs-version)
-			(display-line-numbers-mode -1)
-		(linum-mode -1))
 	(text-scale-set -10))
 
 (defun zoom-reset ()
 	(interactive)
-  (if (version<= "26.0.50" emacs-version)
-			(display-line-numbers-mode 1)
-		(linum-mode 1))
 	(text-scale-set 0))
 
 (global-set-key (kbd "C-x C-_") 'zoom-out)
@@ -93,8 +93,8 @@ There are two things you can do about this warning:
  '(neo-theme (quote ascii))
  '(package-selected-packages
 	 (quote
-		(buffer-move ace-jump-mode company-lua company undo-tree helm-descbinds neotree lua-mode smooth-scrolling avk-emacs-themes)))
- '(undo-tree-visualizer-diff t))
+		(paredit buffer-move ace-jump-mode company-lua company undo-tree helm-descbinds neotree lua-mode smooth-scrolling avk-emacs-themes)))
+ '(undo-tree-visualizer-diff nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -113,8 +113,8 @@ There are two things you can do about this warning:
 (global-set-key (kbd "C-S-y") 'helm-show-kill-ring)
 
 ;; Ace Jump Mode settings.
-(global-set-key (kbd "C-c C-SPC") 'ace-jump-char-mode) ;;; Jump really fast.
-(global-set-key (kbd "C-c C-c C-SPC") 'ace-jump-line-mode) ;;; Jump to line.
+(global-set-key (kbd "C-x C-SPC") 'ace-jump-char-mode) ;;; Jump really fast.
+(global-set-key (kbd "C-x C-S-SPC") 'ace-jump-line-mode) ;;; Jump to line.
 
 ;; C-/ undo
 ;; C-? redo
@@ -128,14 +128,15 @@ There are two things you can do about this warning:
 				require-final-newline nil))
 (add-hook 'lua-mode-hook 'lua-settings)
 
+(add-hook 'emacs-lisp-mode-hook 'paredit-mode)
+(eldoc-add-command
+ 'paredit-backward-delete
+ 'paredit-close-round)
+
 ;; Don't jank scroll when curson moves.
 (smooth-scrolling-mode 1)
 
 (put 'upcase-region 'disabled nil) ;;; C-x C-uppercase
 (put 'downcase-region 'disabled nil) ;;; C-x C-lowercase
-
-;; org-mode settings.
-(setq org-catch-invisible-edits t
-			org-support-shift-select t)
 
 (helm-descbinds-mode) ;;; C-h b for current key combos.
