@@ -1,0 +1,128 @@
+echo *.db
+echo *(/)
+echo */
+echo *(/)
+eshell-display-modifier-help
+cd $Ben
+cd ../..
+cd Documents/
+cd Ben/
+ls
+rm --help
+rm *.db
+ls
+cd PROGRAMMING/Custom\ Programming\ Languages/
+ls
+cd Baller/
+ls
+cd ..
+cd Calc2/
+ls
+cd ..
+cd Dependant\ Shell/
+ls
+cd ../Funcally/
+ls
+cd ..
+cd ./Typist/
+ls
+clear.
+cd ..
+clear
+ls
+cd ..
+ls
+rm Thumbs.db 
+for f in *(:U) { echo $f }
+echo *(:U)
+$(echo *)
+$(eshell/echo "*")
+$(eshell/echo *)
+${echo *}
+${echo *}(:o)
+${echo *}(:O)
+nano
+lua
+lua
+add-to-list $('eshell-visual-commands) lua
+(add-to-list 'eshell-visual-commands "lua")
+lua
+dzfhd
+drh
+rfh
+drh
+rdhcls
+cls
+cd $Ben
+echo $Ben
+cd $Ben
+zfg
+erh
+rh
+jt
+j
+clear
+cls
+clear t
+dfhr
+dth
+sthdrt
+htr
+hth
+cls t
+clear t
+dg
+xg
+sderdg
+rg
+cls
+Welcome to the Emacs cat shell
+cat /dev/clip
+echo lol >> /dev/clip
+top
+less
+lua
+lua -i
+lua -h
+car $('(a b))
+(car '(a b))
+car {*}
+echo *
+car *
+cdr *
+cd $Ben
+car (a b)
+which which
+cat #<.emacs>
+cat #<.emacs>
+bargs
+echo #<.emacs> > cat
+echo #<.emacs>
+rm cat
+cd $Ben
+ls
+rm cat\~ 
+bargs #<.emacs> echo
+-contains\?
+bargs #<.emacs> cat
+bargs #<buffer .emacsfling> echo
+bargs #<buffer .emacs> echo
+bargs #<buffer .emacs> echo
+bargs #<buffer .emacs> echo
+bargs #<buffer .emacs> echo
+bargs #<buffer .emacs> echo
+bargs #<buffer .emacs> echo
+bargs #<buffer .emacs> echo
+bargs #<buffer .emacs> echo
+bargs #<buffer .emacs> echo
+bargs #<buffer .emacs> echo
+bargs #<buffer .emacs> echo
+bargs
+bargs #<.emacs> echo
+bargs #<.emacs> echo
+bargs #<.emacs> echo
+bargs #<.emacs> echo
+bargs #<.emacs> echo
+bargs #<.emacs> echo
+bargs #<.emacs> echo
+(with-current-buffer ".emacs" (buffer-string ".emacs"))

@@ -1,29 +1,74 @@
-; Universal settings.
+;;;; Universal settings.
 
-(setq ring-bell-function 'ignore ;;; No more stupid beeping.
+(setq ring-bell-function 'ignore ; No more stupid beeping.
 			initial-scratch-message ""
 			require-final-newline nil)
 (setq-default tab-width 2)
 (setq-default require-final-newline nil)
-(setq-default cursor-type 'bar) ;;; Thin cursor.
+(setq-default cursor-type 'bar) ; Thin cursor.
 
 ;; Remove the stuff. Not that it's useless just that it's ugly.
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 
+;; Combo to scroll 1 line.
+(defun scroll-down-1 ()
+	(interactive)
+	(scroll-up 1))
+
+(defun scroll-up-1 ()
+	(interactive)
+	(scroll-down 1))
+
+(global-set-key (kbd "<C-down>") 'scroll-down-1)
+(global-set-key (kbd "<C-up>") 'scroll-up-1)
+
+;; Make new buffers.
+(setq new-buffer-number 1)
+(defun new-buffer ()
+	"Make new buffer and select it."
+	(interactive)
+	(switch-to-buffer (concat "*scratch<" (number-to-string new-buffer-number) ">*"))
+	(setq new-buffer-number (1+ new-buffer-number)))
+
+(global-set-key (kbd "C-c t") 'new-buffer)
+
+;; Reopen killed buffers.
+(defvar killed-file-list nil
+  "List of recently killed files.")
+
+(defun add-file-to-killed-file-list ()
+  "If buffer is associated with a file name, add that file to the
+`killed-file-list' when killing the buffer."
+  (when buffer-file-name
+    (push buffer-file-name killed-file-list)))
+
+(add-hook 'kill-buffer-hook 'add-file-to-killed-file-list)
+
+(defun reopen-killed-file ()
+  "Reopen the most recently killed file, if one exists."
+  (interactive)
+  (when killed-file-list
+    (find-file (pop killed-file-list))))
+
+(global-set-key (kbd "C-c T") 'reopen-killed-file)
+
 ;; Set default directory.
 (setq inhibit-startup-message t)
 (cond
  ((string-equal system-type "windows-nt")
 	(progn
-		(setq default-directory (concat (getenv "HOME") "/../../Documents/Ben/")))))
+		(let ((Ben (concat (getenv "HOME") "/../../Documents/Ben/")))
+			(setq default-directory Ben)
+			(setenv "Ben" Ben))))) ; cd $Ben to move to the default Windows Ben folder.
 
 ;; org-mode settings.
-(setq org-catch-invisible-edits t
-			org-support-shift-select t)
+(setq org-catch-invisible-edits t)
 
-(global-set-key (kbd "C-x r r") 'remember) ;;; Take quick notes.
+;; Remember settings.
+(global-set-key (kbd "C-x r r") 'remember) ; Take quick notes.
+(setq remember-data-file "~/.emacs.d/notes.org")
 
 ;; No more *Messages* buffer.
 (setq-default message-log-max nil)
@@ -36,7 +81,7 @@
 				 (kill-buffer buffer))))
 (add-hook 'minibuffer-exit-hook 'kill-completions-buffer)
 
-(setq set-mark-command-repeat-pop t) ;;; C-SPC after C-u C-SPC to keep popping.
+(setq set-mark-command-repeat-pop t) ; C-SPC after C-u C-SPC to keep popping.
 (set-face-attribute 'default nil :font "Fira Code-12")
 
 ;; Quickly zoom in and out of the buffer.
@@ -62,7 +107,53 @@
   (setq buffer-display-table (make-display-table))
   (aset buffer-display-table ?\^M []))
 
-; MELPA
+(defun window-split-toggle ()
+  "Toggle between horizontal and vertical split with two windows."
+  (interactive)
+  (if (> (length (window-list)) 2)
+      (error "Can't toggle with more than 2 windows!")
+    (let ((func (if (window-full-height-p)
+                    #'split-window-vertically
+                  #'split-window-horizontally)))
+      (delete-other-windows)
+      (funcall func)
+      (save-selected-window
+        (other-window 1)
+        (switch-to-buffer (other-buffer))))))
+
+;; Eshell settings.
+(defun eshell-setup ()
+	(eshell/alias "cls" "clear 1")) ; Delete Eshell contents instead of just scrolling.
+	;; Commands that require some level of interactivity.
+	;; (add-to-list 'eshell-visual-commands "lua")
+
+(add-hook 'eshell-mode-hook 'eshell-setup)
+
+(defun eshell/-buffer-as-args (buffer separator command)
+  "Takes the contents of BUFFER, and splits it on SEPARATOR, and
+runs the COMMAND with the contents as arguments. Use an argument
+`%' to substitute the contents at a particular point, otherwise,
+they are appended."
+  (let* ((lines (with-current-buffer buffer
+                  (split-string
+                   (buffer-substring-no-properties (point-min) (point-max))
+                   separator)))
+         (subcmd (if (-contains? command "%")
+                     (-flatten (-replace "%" lines command))
+                   (-concat command lines)))
+         (cmd-str  (string-join subcmd " ")))
+    (message cmd-str)
+    (eshell-command-result cmd-str)))
+
+(defun eshell/bargs (buffer &rest command)
+  "Passes the lines from BUFFER as arguments to COMMAND."
+  (eshell/-buffer-as-args buffer "\n" command))
+
+(defun eshell/sargs (buffer &rest command)
+  "Passes the words from BUFFER as arguments to COMMAND."
+  (eshell/-buffer-as-args buffer nil command))
+
+;;;; MELPA
 
 (require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
@@ -90,10 +181,9 @@ There are two things you can do about this warning:
  '(custom-safe-themes
 	 (quote
 		("5d75f9080a171ccf5508ce033e31dbf5cc8aa19292a7e0ce8071f024c6bcad2a" default)))
- '(neo-theme (quote ascii))
  '(package-selected-packages
 	 (quote
-		(paredit buffer-move ace-jump-mode company-lua company undo-tree helm-descbinds neotree lua-mode smooth-scrolling avk-emacs-themes)))
+		(undo-tree esup ace-jump-mode company-lua company helm-descbinds lua-mode smooth-scrolling avk-emacs-themes)))
  '(undo-tree-visualizer-diff nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -102,19 +192,17 @@ There are two things you can do about this warning:
  ;; If there is more than one, they won't work right.
  )
 
-; Package dependent settings.
+;;;; Package dependent settings.
 
 (load-theme 'avk-darkblue-yellow)
-(neotree)
-(global-set-key (kbd "C-x n t") 'neotree) ;;; Open NeoTree.
-(add-hook 'after-init-hook 'global-company-mode) ;;; Autocomplete mode.
+(add-hook 'after-init-hook 'global-company-mode) ; Autocomplete mode.
 
 (global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
 (global-set-key (kbd "C-S-y") 'helm-show-kill-ring)
 
 ;; Ace Jump Mode settings.
-(global-set-key (kbd "C-x C-SPC") 'ace-jump-char-mode) ;;; Jump really fast.
-(global-set-key (kbd "C-x C-S-SPC") 'ace-jump-line-mode) ;;; Jump to line.
+(global-set-key (kbd "C-x C-SPC") 'ace-jump-char-mode) ; Jump really fast.
+(global-set-key (kbd "C-x C-S-SPC") 'ace-jump-line-mode) ; Jump to line.
 
 ;; C-/ undo
 ;; C-? redo
@@ -128,15 +216,10 @@ There are two things you can do about this warning:
 				require-final-newline nil))
 (add-hook 'lua-mode-hook 'lua-settings)
 
-(add-hook 'emacs-lisp-mode-hook 'paredit-mode)
-(eldoc-add-command
- 'paredit-backward-delete
- 'paredit-close-round)
-
 ;; Don't jank scroll when curson moves.
 (smooth-scrolling-mode 1)
 
-(put 'upcase-region 'disabled nil) ;;; C-x C-uppercase
-(put 'downcase-region 'disabled nil) ;;; C-x C-lowercase
+(put 'upcase-region 'disabled nil) ; C-x C-uppercase
+(put 'downcase-region 'disabled nil) ; C-x C-lowercase
 
-(helm-descbinds-mode) ;;; C-h b for current key combos.
+(helm-descbinds-mode) ; C-h b for current key combos.

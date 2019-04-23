@@ -1,0 +1,31 @@
+;; -*- mode: emacs-lisp; coding: emacs-mule; -*-
+;; --------------------------------------------------------------------------
+;; Desktop File for Emacs
+;; --------------------------------------------------------------------------
+;; Created Tue Apr 23 14:36:49 2019
+;; Desktop file format version 208
+;; Emacs version 26.1
+
+;; Global section:
+(setq desktop-saved-frameset [frameset 1 (23743 23361 84982 0) (desktop . "208") "Camto@LAPTOP-MVN7O809" nil nil ((((minibuffer . t) (undecorated) (skip-taskbar) (font-backend uniscribe gdi) (font . "-outline-Fira Code-normal-normal-normal-mono-16-*-*-*-c-*-iso8859-1") (border-width . 0) (internal-border-width . 0) (right-divider-width . 0) (bottom-divider-width . 0) (vertical-scroll-bars) (horizontal-scroll-bars) (foreground-color . "wheat3") (background-color . "#191935") (mouse-color . "black") (border-color . "black") (screen-gamma) (line-spacing) (left-fringe . 8) (right-fringe . 8) (no-focus-on-map) (no-accept-focus) (no-special-glyphs) (alpha) (menu-bar-lines . 0) (tool-bar-lines . 0) (height . 55) (title) (icon-type) (auto-raise) (auto-lower) (cursor-type . box) (scroll-bar-width . 0) (scroll-bar-height . 0) (fullscreen . maximized) (z-group) (visibility . t) (display-type . color) (background-mode . dark) (cursor-color . "green") (environment) (frameset--id . "A7F4-E7CE-3F08-55E1") (frameset--mini t . t) (modeline . t) (unsplittable) (icon-name) (display . "w32") (explicit-name) (tool-bar-position . top) (width . 190) (left + -8) (top + -8)) ((min-height . 4) (min-width . 10) (min-height-ignore . 3) (min-width-ignore . 4) (min-height-safe . 1) (min-width-safe . 2) (min-pixel-height . 76) (min-pixel-width . 100) (min-pixel-height-ignore . 57) (min-pixel-width-ignore . 40) (min-pixel-height-safe . 19) (min-pixel-width-safe . 20)) leaf (pixel-width . 1920) (pixel-height . 1038) (total-width . 192) (total-height . 55) (normal-height . 1.0) (normal-width . 1.0) (buffer ".emacs" (selected . t) (hscroll . 0) (fringes 8 8 nil) (margins nil) (scroll-bars nil 0 t nil 0 t) (vscroll . 0) (dedicated) (point . 1) (start . 1))))])
+(setq desktop-missing-file-warning nil)
+(setq tags-file-name nil)
+(setq tags-table-list nil)
+(setq search-ring '("Esh" "company" "javascript" "company" "installed" "org-mode" "hook" "remeber" "C-x " "C-x SPC" "ace" "-1" "eshell-v" "visual" "ace-" "diff"))
+(setq regexp-search-ring nil)
+(setq register-alist (list (list 82 "Unprintable entity" (let ((mk (make-marker))) (add-hook 'desktop-delay-hook `(lambda nil (set-marker ,mk ,nil (get-buffer ," *temp*")))) mk))))
+(setq file-name-history '("~/.emacs" "c:/Users/Camto/Documents/Ben/" "~/.emacs" "~/.emacs.d/notes" "c:/Users/Camto/Documents/Ben/PROGRAMMING/Programming Languages I Like.org" "~/.emacs" "c:/Users/Camto/Documents/Ben/School/Espanol/Jose Antonio Davila.org" "~/../../Documents/Ben/School/Espanol/Poema.org" "~/.emacs"))
+
+;; Buffer section -- buffers listed in same order as in buffer list:
+(desktop-create-buffer 208
+  "c:/Users/Camto/AppData/Roaming/.emacs"
+  ".emacs"
+  'emacs-lisp-mode
+  '(eldoc-mode undo-tree-mode company-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((buffer-display-time 23743 23320 52661 0) (buffer-file-coding-system . undecided-dos))
+  '((mark-ring nil)))
+
