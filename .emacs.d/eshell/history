@@ -1,128 +1,128 @@
-echo *.db
-echo *(/)
-echo */
-echo *(/)
-eshell-display-modifier-help
-cd $Ben
-cd ../..
-cd Documents/
-cd Ben/
+cat gift1.out
+amr -150cat
+cat gift1.in
+python friday.py 
+python friday.py 
+python friday.py 
+python friday.py 
+python friday.py 
+python friday.py 
+python friday.py 
+python friday.py 
+python friday.py 
+python friday.py 
+python friday.py 
+python friday.py 
+python friday.py 
+python friday.py 
+cat friday.out
+python beads.py
+python beads.py
+python beads.py
+python beads.py
+python beads.py
+python beads.py
+cat beads.out
+python beads.py
+cat beads.out
+python beads.py
+cat beads.out
+python beads.py
+python beads.py
+python beads.py
+python beads.py
+cat beads.out
+python beads.py
+python beads.py
+cat beads.out
+python beads.py
+python beads.py
+python beads.py
+cat beads.out
+python beads.py
+python beads.py
+cat beads.out
+python beads.py
+cat beads.out
+python beads.py
+cat beads.out
+python beads.py
+cat beads.out
+python beads.py
+cat beads.out
+python beads.py
+cat beads.out
+python nbeads.py 
+cat beads.in 
+cat beads.in 
+python nbeads.py 
+python beads.py
+cat beads.out 
+cd Stuff/temp/
 ls
-rm --help
-rm *.db
+python py.py 
+python py.py 
+cat file\ name\ here.txt
+lua 
+echo 3
 ls
-cd PROGRAMMING/Custom\ Programming\ Languages/
+ghc poop
+poop
+ghci
+rscript
+r
+r
+path
+PATH
+$PATH
+echo $PATH
+cd C:\Program Files\R\R-3.6.1\bin
+cd "C:\Program Files\R\R-3.6.1\bin"
+r''
+r
+r
+r
+rscript
+cd i386/
 ls
-cd Baller/
+Rscript.exe 
+Rterm
+cd "	C:\Program Files\R\R-3.6.1\bin"
+cd "C:\Program Files\R\R-3.6.1\bin"
+ls
+R
+R --no-save
+R --no-save
+R --no-save
+R --save
+R
+R --vanilla
+R --help
+cd i386/
+ls
+Rterm
+Rterm --help
+Rterm --vanilla
+Rterm --help
+Rterm --vanilla
+map {make-concat a % b % c} q w e
+map {make-concat "a " % " b " % " c"} q w e
+echo {map {make-concat "a " % " b " % " c"} q w e}
+for s in map {make-concat "a " % " b " % " c"} q w e { echo $s }
+rterm
+rterm --vanilla
+rterm --vanilla
+rterm
+rterm --vanilla
+cd $BEN
+cd PROGRAMMING/Custom\ Programming\ Languages/calc/calc/
 ls
 cd ..
-cd Calc2/
 ls
+build.bat 
+build.bat 
+build.bat 
+build.bat 
 cd ..
-cd Dependant\ Shell/
-ls
-cd ../Funcally/
-ls
-cd ..
-cd ./Typist/
-ls
-clear.
-cd ..
-clear
-ls
-cd ..
-ls
-rm Thumbs.db 
-for f in *(:U) { echo $f }
-echo *(:U)
-$(echo *)
-$(eshell/echo "*")
-$(eshell/echo *)
-${echo *}
-${echo *}(:o)
-${echo *}(:O)
-nano
-lua
-lua
-add-to-list $('eshell-visual-commands) lua
-(add-to-list 'eshell-visual-commands "lua")
-lua
-dzfhd
-drh
-rfh
-drh
-rdhcls
-cls
-cd $Ben
-echo $Ben
-cd $Ben
-zfg
-erh
-rh
-jt
-j
-clear
-cls
-clear t
-dfhr
-dth
-sthdrt
-htr
-hth
-cls t
-clear t
-dg
-xg
-sderdg
-rg
-cls
-Welcome to the Emacs cat shell
-cat /dev/clip
-echo lol >> /dev/clip
-top
-less
-lua
-lua -i
-lua -h
-car $('(a b))
-(car '(a b))
-car {*}
-echo *
-car *
-cdr *
-cd $Ben
-car (a b)
-which which
-cat #<.emacs>
-cat #<.emacs>
-bargs
-echo #<.emacs> > cat
-echo #<.emacs>
-rm cat
-cd $Ben
-ls
-rm cat\~ 
-bargs #<.emacs> echo
--contains\?
-bargs #<.emacs> cat
-bargs #<buffer .emacsfling> echo
-bargs #<buffer .emacs> echo
-bargs #<buffer .emacs> echo
-bargs #<buffer .emacs> echo
-bargs #<buffer .emacs> echo
-bargs #<buffer .emacs> echo
-bargs #<buffer .emacs> echo
-bargs #<buffer .emacs> echo
-bargs #<buffer .emacs> echo
-bargs #<buffer .emacs> echo
-bargs #<buffer .emacs> echo
-bargs #<buffer .emacs> echo
-bargs
-bargs #<.emacs> echo
-bargs #<.emacs> echo
-bargs #<.emacs> echo
-bargs #<.emacs> echo
-bargs #<.emacs> echo
-bargs #<.emacs> echo
-bargs #<.emacs> echo
-(with-current-buffer ".emacs" (buffer-string ".emacs"))
+build.bat 
+build.bat 
